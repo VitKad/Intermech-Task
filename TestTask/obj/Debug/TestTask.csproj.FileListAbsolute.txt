@@ -1,0 +1,11 @@
+C:\Users\Kadi\source\repos\TestTask\TestTask\bin\Debug\TestTask.exe.config
+C:\Users\Kadi\source\repos\TestTask\TestTask\bin\Debug\TestTask.exe
+C:\Users\Kadi\source\repos\TestTask\TestTask\bin\Debug\TestTask.pdb
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.csprojAssemblyReference.cache
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.Form1.resources
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.Properties.Resources.resources
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.csproj.GenerateResource.cache
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.csproj.CoreCompileInputs.cache
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.exe
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.pdb
+C:\Users\Kadi\source\repos\TestTask\TestTask\obj\Debug\TestTask.csproj.ResolveComReference.cache
