@@ -124,25 +124,31 @@ namespace TestTask
             {
                 return;
             }
-
-            //запрос на получение информации о дочерних объектах
+           
             SqlDataAdapter structureAdapter = new SqlDataAdapter(
                String.Format(
-               @"SELECT 
+               @"SELECT DISTINCT
                 objects.F_OBJECT_ID as 'Номер объекта', 
-                types.F_OBJECT_TYPE as 'Идентификатор типа объекта', 
                 types.F_OBJ_NAME as 'Наименование объекта',
-                views.CAPTION as 'Описание'
+                attributes.F_NAME as 'Наименование атрибута',
+                object_attributes.F_STRING_VALUE as 'Значение атрибута',
+                relations_types.F_DESCRIPTION as 'Тип связи'
                 FROM INTERMECH_BASE.dbo.IMS_OBJECTS as objects
-                INNER JOIN INTERMECH_BASE.dbo.IMS_OBJECT_TYPES as types
+                LEFT JOIN INTERMECH_BASE.dbo.IMS_OBJECT_TYPES as types
                 ON objects.F_OBJECT_TYPE = types.F_OBJECT_TYPE
-                INNER JOIN INTERMECH_BASE.dbo.IMS_OBJECTS_VIEW as views
-                ON objects.F_OBJECT_ID = views.F_OBJECT_ID
+                LEFT JOIN INTERMECH_BASE.dbo.IMS_OBJECT_ATTRS as object_attributes
+                ON objects.F_OBJECT_ID = object_attributes.F_OBJECT_ID
+                LEFT JOIN INTERMECH_BASE.dbo.IMS_ATTRIBUTES as attributes
+                ON object_attributes.F_ATTRIBUTE_ID = attributes.F_ATTRIBUTE_ID
+                LEFT JOIN INTERMECH_BASE.dbo.IMS_RELATIONS as relations
+                ON objects.F_ID = relations.F_PART_ID
+                LEFT JOIN INTERMECH_BASE.dbo.IMS_RELATION_TYPES as relations_types
+                ON relations.F_RELATION_TYPE = relations_types.F_RELATION_TYPE
                 WHERE objects.F_ID IN (
                 SELECT relations.F_PART_ID as 'Потомок'
                 FROM INTERMECH_BASE.dbo.IMS_RELATIONS as relations
-                WHERE F_PROJ_ID = {0}
-                );
+                WHERE F_PROJ_ID = {0}) AND (object_attributes.F_ATTRIBUTE_ID = 9 OR object_attributes.F_ATTRIBUTE_ID = 10 OR object_attributes.F_ATTRIBUTE_ID = 1000 OR object_attributes.F_ATTRIBUTE_ID IS NULL);
+             
                 ", dataGridView1.CurrentCell.Value.ToString()
             ), intermechConnection);
 
